@@ -1,6 +1,6 @@
 import numpy as np
-import tensorflow as tf
 import matplotlib.pyplot as plt
+import tensorflow as tf
 
 class Distribution:    
     def calc_prob(self, z):
