@@ -16,7 +16,23 @@ git clone git@github.com:opeco17/normalizing-flow.git
 cd normalizing-flow
 
 # Build and run Docker container
-# Executed result will be output to normalizing-flow/src/figure/
 docker-compose up -d
+
+# Training Normalizing Flow
+# Executed result will be output to normalizing-flow/src/figure/
 docker exec -it normalizing-flow_nf_1 python3 train.py
+```
+
+# How To Use (NOT Docker)
+```
+git clone git@github.com:opeco17/normalizing-flow.git
+cd normalizing-flow
+
+# Install requirements
+pip3 install -r requirements.txt
+
+# Training Normalizing Flow
+# Executed result will be output to normalizing-flow/src/figure/
+cd src
+python3 train.py
 ```
