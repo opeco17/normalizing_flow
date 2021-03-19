@@ -19,7 +19,7 @@ cd normalizing-flow
 docker-compose up -d
 
 # Training Normalizing Flow
-# Executed result will be output to normalizing-flow/src/figure/
+# Executed result will be output to normalizing-flow/src/figure/ at local machine
 docker exec -it normalizing-flow_nf_1 python3 train.py
 ```
 
@@ -32,7 +32,7 @@ cd normalizing-flow
 pip3 install -r requirements.txt
 
 # Training Normalizing Flow
-# Executed result will be output to normalizing-flow/src/figure/
+# Executed result will be output to normalizing-flow/src/figure/ at local machine
 cd src
 python3 train.py
 ```
