@@ -32,14 +32,12 @@ class Distribution:
             os.makedirs(FIGURE_DIR)
         side = np.linspace(-size, size, FIGURE_RESOLUTION)
         z1, z2 = np.meshgrid(side, side)
-        shape = z1.shape
-        z1 = z1.ravel()
-        z2 = z2.ravel()
+        z1, z2 = z1.ravel(), z2.ravel()
         z = np.c_[z1, z2]
-        probability = cls.calc_prob(z).reshape(shape)
+        prob = cls.calc_prob(z).reshape((FIGURE_RESOLUTION, FIGURE_RESOLUTION))
         
         plt.figure(figsize=(FIGURE_SIZE, FIGURE_SIZE))
-        plt.imshow(probability)
+        plt.imshow(prob)
         plt.tick_params(top=False, bottom=False, left=False, right=False)
         plt.tick_params(labeltop=False, labelbottom=False,labelleft=False,labelright=False)
         plt.savefig(os.path.join(FIGURE_DIR, f'{cls.camel_to_snake(cls.__name__)}.png'))
