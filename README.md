@@ -17,5 +17,6 @@ cd normalizing-flow
 
 # Build and run Docker container
 # Executed result will be output to normalizing-flow/src/figure/
-docker-compose up -d 
+docker-compose up -d
+docker exec -it normalizing-flow_nf_1 python3 train.py
 ```
