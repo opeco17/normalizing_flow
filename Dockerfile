@@ -1,6 +1,6 @@
 FROM python:3.7.0
 
-RUN mkdir /dis
+RUN mkdir /workspace
 
 RUN apt-get update && \
   apt-get upgrade -y && \
@@ -9,8 +9,6 @@ RUN apt-get update && \
   pip install tensorflow==1.15.0 &&\
   pip install matplotlib==3.1.0
 
-COPY ./ /dis
+COPY ./src/* /workspace/
 
-WORKDIR /dis
-
-CMD ['python', 'main.py']
+WORKDIR /workspace
