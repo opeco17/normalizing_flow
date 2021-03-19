@@ -6,4 +6,3 @@ services:
     volumes:
       - ./src:/workspace
     tty: true
-    command: python3 main.py

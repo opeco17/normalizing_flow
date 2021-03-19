@@ -1,3 +1,4 @@
+import argparse
 import os
 
 import numpy as np
@@ -33,7 +34,6 @@ def train(TargetDistribution: Distribution) -> None:
     train = get_train(loss)
 
     with tf.Session() as sess:
-        invisible_axis = True
         sess.run(tf.global_variables_initializer())
 
         for iteration in range(ITERATION+1):
@@ -52,5 +52,14 @@ def train(TargetDistribution: Distribution) -> None:
 
 
 if __name__ == '__main__':
-    train(TargetDistribution1)
-    train(TargetDistribution2)
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-td', '--target_distribution', type=int)
+    args = parser.parse_args()
+
+    if args.target_distribution == 1:
+        train(TargetDistribution1)
+    elif args.target_distribution == 2:
+        train(TargetDistribution2)
+    else:
+        train(TargetDistribution1)
+        train(TargetDistribution2)
