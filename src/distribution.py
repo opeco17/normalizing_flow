@@ -1,14 +1,14 @@
 from abc import abstractmethod
 import os
-import re
 
+import matplotlib.pyplot as plt
 import numpy as np
 from numpy import ndarray
-import matplotlib.pyplot as plt
 import tensorflow as tf
 from tensorflow.python.framework.ops import Tensor
 
-from config import *
+from settings import *
+from utils import camel_to_snake
 
 
 class Distribution:
@@ -26,7 +26,7 @@ class Distribution:
         raise NotImplementedError
         
     @classmethod
-    def show_distribution(cls, size: int=5) -> None:
+    def save_distribution(cls, size: int=5) -> None:
         """Show probability distribution"""
         if not os.path.exists(FIGURE_DIR):
             os.makedirs(FIGURE_DIR)
@@ -34,21 +34,15 @@ class Distribution:
         z1, z2 = np.meshgrid(side, side)
         z1, z2 = z1.ravel(), z2.ravel()
         z = np.c_[z1, z2]
-        prob = cls.calc_prob(z).reshape((FIGURE_RESOLUTION, FIGURE_RESOLUTION))
+        p = cls.calc_prob(z).reshape((FIGURE_RESOLUTION, FIGURE_RESOLUTION))
         
         plt.figure(figsize=(FIGURE_SIZE, FIGURE_SIZE))
-        plt.imshow(prob)
+        plt.imshow(p)
         plt.tick_params(top=False, bottom=False, left=False, right=False)
         plt.tick_params(labeltop=False, labelbottom=False,labelleft=False,labelright=False)
-        plt.savefig(os.path.join(FIGURE_DIR, f'{cls.camel_to_snake(cls.__name__)}.png'))
-        plt.show()
-        
-    @classmethod
-    def camel_to_snake(cls, camel_str: str) -> str:
-        """Convert camel case string to snake case string"""
-        snake_str = re.sub('(.)([A-Z][a-z]+)', r'\1_\2', camel_str)
-        snake_str = re.sub('([a-z0-9])([A-Z])', r'\1_\2', snake_str).lower()
-        return snake_str
+        plt.savefig(os.path.join(FIGURE_DIR, f'{camel_to_snake(cls.__name__)}.png'))
+        plt.clf()
+        plt.close()
 
 
 class NormalDistribution(Distribution):
