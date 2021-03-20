@@ -11,13 +11,13 @@ from distribution import Distribution, NormalDistribution, TargetDistribution1, 
 from logger import logger
 from normalizing_flow import NormalizingFlow
 from utils import save_loss_values, save_result
-                
-                
+
+
 def train(target_distribution: Distribution) -> None:
     """Training Normalizing Flow"""
     
     target_distribution.save_distribution()
-        
+    
     normalizing_flow = NormalizingFlow(K=NORMALIZING_FLOW_LAYER_NUM)
 
     z_0, log_q_0 = normalizing_flow.get_placeholder()
@@ -34,7 +34,7 @@ def train(target_distribution: Distribution) -> None:
         logger.info('All variables initialized')
         logger.info(f'Training Start (number of iterations: {ITERATION})')
 
-        for iteration in range(ITERATION+1):
+        for iteration in range(ITERATION + 1):
             z_0_batch = NormalDistribution.sample(BATCH_SIZE)
             log_q_0_batch = np.log(NormalDistribution.calc_prob(z_0_batch))
             _, loss_value = sess.run([trainer, loss], {z_0:z_0_batch, log_q_0:log_q_0_batch})

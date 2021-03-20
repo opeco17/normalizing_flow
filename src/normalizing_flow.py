@@ -41,7 +41,7 @@ class PlanarFlow(Flow):
 
 class NormalizingFlow:
     
-    def __init__(self, K: int, dim: int=2) -> None:
+    def __init__(self, K: int=16, dim: int=2) -> None:
         self.K = K
         self.dim = dim
         self.planar_flows = [PlanarFlow(self.dim) for i in range(self.K)]
