@@ -10,7 +10,7 @@ Unofficial implementation of [normalizing flow](http://proceedings.mlr.press/v37
 ## Samples from Normalizing Flow
 <img src="https://user-images.githubusercontent.com/46510874/71621432-8c1d8600-2c12-11ea-9391-a0fcfe83fc76.png" width="25%"> <img src="https://user-images.githubusercontent.com/46510874/71621451-a22b4680-2c12-11ea-81be-5ee225a73fd8.png" width="25%"> <img src="https://user-images.githubusercontent.com/46510874/71621458-aeaf9f00-2c12-11ea-96ee-d49e57492797.png" width="25%">
 
-# How To Use (Docker)
+# How To Use (with Docker)
 ```
 git clone git@github.com:opeco17/normalizing-flow.git
 cd normalizing-flow
@@ -23,7 +23,7 @@ docker-compose up -d
 docker exec -it normalizing-flow_nf_1 python3 train.py
 ```
 
-# How To Use (NOT Docker)
+# How To Use (without Docker)
 ```
 git clone git@github.com:opeco17/normalizing-flow.git
 cd normalizing-flow
